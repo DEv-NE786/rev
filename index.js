@@ -33,73 +33,32 @@ const dateFormat = require('dateformat');
 
 
 
-const prefix = "1"
-const developers = "496996678088392725"
+const prefix = "$"
+const developers = "706161534233083964"
 
 ////////
 
 
 client.on('message', async msg => {
-var prefix = ".";
+var prefix = "$";
 var user = msg.author;
-var a = msg.guild.roles.find("name", 'League Of Legends');
+var a = msg.guild.roles.find("name", 'Male');
 if(!a){
 a = await msg.guild.createRole({
-name: "League Of Legends",
+name: "Male",
 color: "#ffffff",
 permissions:[]
 })
  
 }
-var m = msg.guild.roles.find("name", 'Minecraft');
+var m = msg.guild.roles.find("name", 'Female');
 if(!m){
 m = await msg.guild.createRole({
-name: "Minecraft",
+name: "Female",
 color: "#ffffff",
 permissions:[]
 })
-}
-var f = msg.guild.roles.find("name", 'Fortnite');
-if(!f){
-f = await msg.guild.createRole({
-name: "Fortnite",
-color: "#ffffff",
-permissions:[]
-})
-}
-var m = msg.guild.roles.find("name", 'Minecraft');
-if(!m){
-m = await msg.guild.createRole({
-name: "Minecraft",
-color: "#ffffff",
-permissions:[]
-})
-}
-var f = msg.guild.roles.find("name", 'Cs GO');
-if(!f){
-f = await msg.guild.createRole({
-name: "Cs GO",
-color: "#ffffff",
-permissions:[]
-})
-}
-var b = msg.guild.roles.find("name", 'Creative Destruction');
-if(!b){
-b = await msg.guild.createRole({
-name: "Creative Destruction",
-color: "#ffffff",
-permissions:[]
-})
-}
-var black = msg.guild.roles.find("name", 'Blacksquad');
-if(!black){
-black = await msg.guild.createRole({
-name: "Blacksquad",
-color: "#ffffff",
-permissions:[]
-})
-}
- 
+} 
 if (msg.content.startsWith(prefix +'addmerole')) {
  
 if(!msg.channel.guild) return msg.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
@@ -120,9 +79,6 @@ let ccc = (reaction, user) => reaction.emoji.name === '❌' && user.id === msg.a
  
 let aa = res.createReactionCollector(aaa, { maxMatches:1 , time: 20000 , });
 let mm = res.createReactionCollector(mmm, { maxMatches:1 , time: 20000 , });
-let ff = res.createReactionCollector(fff, { maxMatches:1 , time: 20000 , });
-let bb = res.createReactionCollector(bbb, { maxMatches:1 , time: 20000 , });
-let bl = res.createReactionCollector(bbbb,{ maxMatches:1 , time: 20000 , });
 let cc = res.createReactionCollector(ccc, { maxMatches:1 , time: 20000 , });
  
 aa.on("collect", r => {
@@ -135,21 +91,7 @@ msg.guild.member(user.id).addRole(m);
 msg.channel.send('`تم اعطائك رتبة للعبة Mincraft `');
 msg.delete();
 })
-ff.on("collect", r => {
-msg.guild.member(user.id).addRole(f);
-msg.channel.send('`تم اعطائك رتبة للعبة Fortnite `');
-msg.delete();
-})
-bb.on("collect", r => {
-msg.guild.member(user.id).addRole(b);
-msg.channel.send('`تم اعطائك رتبة للعبة Brawlhalla `');
-msg.delete();
-})
-bl.on("collect", r => {
-msg.guild.member(user.id).addRole(black);
-msg.channel.send('`تم اعطائك رتبة للعبة Blacksquad `');
-msg.delete();
-})
+
 cc.on("collect", r => {
 msg.delete();
 })
@@ -166,4 +108,4 @@ msg.delete();
 
 
 
-client.login("");
+client.login(process.env.TOKEN);
